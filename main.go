@@ -23,11 +23,11 @@ func main() {
 	// This should be run only once, it creates the actor
 	actor, _ := activityserve.MakeActor("activityserve_test_actor_2", "This is an activityserve test actor", "Service")
 	actor.Follow("https://fosstodon.org/users/qwazix/")
-	actor.CreateNote("Hello World!")
+	actor.CreateNote("Hello World!", "")
 
 	// this can be run any subsequent time
-	actor, _ := activityserve.LoadActor("activityserve_test_actor_2")
-	actor.CreateNote("I'm building #ActivityPub stuff", "")
+	// actor, _ := activityserve.LoadActor("activityserve_test_actor_2")
+	// actor.CreateNote("I'm building #ActivityPub stuff", "")
 
 	activityserve.Serve()
 }
