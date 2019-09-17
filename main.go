@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+
 	"github.com/gologme/log"
 	"github.com/writeas/activityserve"
 )
@@ -20,10 +21,11 @@ func main() {
 
 	activityserve.Setup("config.ini", *debugFlag)
 
-	// This should be run only once, it creates the actor
-	actor, _ := activityserve.MakeActor("activityserve_test_actor_2", "This is an activityserve test actor", "Service")
-	actor.Follow("https://fosstodon.org/users/qwazix/")
-	actor.CreateNote("Hello World!", "")
+	// This creates the actor if it doesn't exist.
+	actor, _ := activityserve.GetActor("activityserve_test_actor_3", "This is an activityserve test actor", "Service")
+	actor.Follow("https://mastodon.social/users/qwazix")
+	actor.Follow("https://cybre.space/users/tzo")
+	// actor.CreateNote("Hello World!", "")
 
 	// this can be run any subsequent time
 	// actor, _ := activityserve.LoadActor("activityserve_test_actor_2")
