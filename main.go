@@ -33,5 +33,5 @@ func main() {
 	// actor, _ := activityserve.LoadActor("activityserve_test_actor_2")
 	// actor.CreateNote("I'm building #ActivityPub stuff", "")
 
-	activityserve.Serve()
+	activityserve.Serve(map[string]activityserve.Actor{actor.Name : actor})
 }
