@@ -23,11 +23,13 @@ func main() {
 
 	// This creates the actor if it doesn't exist.
 	actor, _ := activityserve.GetActor("activityserve_test_actor_3", "This is an activityserve test actor", "Service")
-	actor.Follow("https://mastodon.social/users/qwazix")
-	actor.Follow("https://fosstodon.org/users/qwazix")
-	actor.CreateNote("Hello World!", "")
+	// actor.Follow("https://mastodon.social/users/qwazix")
+	// actor.Follow("https://pe.ertu.be/accounts/qwazix")
+	actor.Follow("https://pixelfed.social/users/qwazix")
+	// actor.Follow("https://pleroma.site/users/qwazix")
+	// actor.CreateNote("Hello World!", "")
 	// let's boost @tzo's fox
-	actor.Announce("https://cybre.space/@tzo/102564367759300737")
+	// actor.Announce("https://cybre.space/@tzo/102564367759300737")
 
 	// this can be run any subsequent time
 	// actor, _ := activityserve.LoadActor("activityserve_test_actor_2")
