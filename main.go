@@ -25,13 +25,13 @@ func main() {
 	actor, _ := activityserve.GetActor("activityserve_test_actor_3", "This is an activityserve test actor", "Service")
 	actor.Follow("https://mastodon.social/users/qwazix")
 	actor.Follow("https://fosstodon.org/users/qwazix")
-	actor.CreateNote("Hello World!", "")
+	// actor.CreateNote("Hi there again!", "")
 	// let's boost @tzo's fox
-	actor.Announce("https://cybre.space/@tzo/102564367759300737")
+	// actor.Announce("https://cybre.space/@tzo/102564367759300737")
 
 	// this can be run any subsequent time
 	// actor, _ := activityserve.LoadActor("activityserve_test_actor_2")
 	// actor.CreateNote("I'm building #ActivityPub stuff", "")
 
-	activityserve.Serve(map[string]activityserve.Actor{actor.Name : actor})
+	activityserve.ServeSingleActor(actor)
 }
