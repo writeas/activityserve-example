@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 
 	"github.com/gologme/log"
 	"github.com/writeas/activityserve"
@@ -17,6 +18,8 @@ func main() {
 	if *debugFlag == true {
 		log.EnableLevel("info")
 		log.EnableLevel("error")
+	} else {
+		log.DisableLevel("info")
 	}
 
 	activityserve.Setup("config.ini", *debugFlag)
@@ -33,6 +36,15 @@ func main() {
 	// this can be run any subsequent time
 	// actor, _ := activityserve.LoadActor("activityserve_test_actor_2")
 	// actor.CreateNote("I'm building #ActivityPub stuff", "")
+
+	// let's add an event to our actor. When somebody sends us a message, print it on the terminal
+
+	actor.OnReceiveContent = func(activity map[string]interface{}) {
+		object := activity["object"].(map[string]interface{})
+		fmt.Println(object["content"].(string))
+	}
+
+	// available actor events at this point are .OnReceiveContent and .OnFollow
 
 	activityserve.ServeSingleActor(actor)
 }
